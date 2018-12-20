@@ -44,17 +44,22 @@ switch ($method) {
                 file_put_contents($slot, $_POST["json"], FILE_APPEND);
                 
                 http_response_code(200);
+
+                echo('Saved!');
                 
             }
             
-            else
+            else{
+                echo('404 file exists!');
                 http_response_code(404);
+            }
             
         }
         
-        else
+        else{
+            echo('404 json not set!');
             http_response_code(404);
-        
+        }
         break;
     
     case 'GET':
@@ -66,14 +71,15 @@ switch ($method) {
                 echo file_get_contents($slot);
                 
                 // Amb resposta
-                
+                echo('202 Content found!');
                 http_response_code(200);
                 
             }
             
-            else
+            else{
+                echo('404 File not found!');
                 http_response_code(404);
-            
+            }
         }
         
         else {
@@ -92,7 +98,7 @@ switch ($method) {
                 $arr[count($arr)] = "2";
             
             echo json_encode($arr);
-            
+            echo('200 Here comes the list!');
             http_response_code(200);
             
         }
@@ -122,7 +128,7 @@ switch ($method) {
         break;
     
     case 'DELETE':
-        
+        echo('202 Deleted!');
         http_response_code(202);
         
         break;
@@ -130,7 +136,7 @@ switch ($method) {
     default:
         
         // Error, retorna NOT FOUND
-        
+        echo('Ups!');
         http_response_code(404);
         
         break;
