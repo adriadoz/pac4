@@ -41,7 +41,7 @@ switch ($method) {
             
             if (!file_exists($slot)) {
                 
-                file_put_contents($slot, $_POST["json"], FILE_APPEND);
+                file_put_contents($slot, $_POST["json"]);
                 
                 http_response_code(200);
 
